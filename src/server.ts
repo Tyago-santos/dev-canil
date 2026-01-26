@@ -4,7 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import mustache from 'mustache-express';
 
-import routerMain from './routes/index.ts';
+import routerMain from './routes/index.js';
+import { notFound } from './routes/notFound.js';
 
 const app = express();
 
@@ -22,9 +23,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('mustache', mustache());
 
 app.use(routerMain);
+app.use(notFound);
 
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(process.env.PORT, () => {
+const PORT = process.env.PORT ?? 3000;
+
+app.listen(Number(PORT), '0.0.0.0', () => {
   console.log('servidor rodando');
 });
