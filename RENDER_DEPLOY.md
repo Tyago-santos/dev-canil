@@ -14,26 +14,31 @@ Este projeto está configurado para fazer deploy automático no **Render**.
 ### Como fazer Deploy
 
 #### 1. Conectar repositório ao Render
+
 - Ir para [render.com](https://render.com)
 - Conectar repositório GitHub
 - Selecionar este projeto
 
 #### 2. Configurações no Render (se usar render.yaml)
+
 O Render lerá automaticamente `render.yaml` e aplicará as configurações.
 
 #### 3. Configurações Manuais (se não usar render.yaml)
 
 **Build Command:**
+
 ```bash
 npm install && npm run build
 ```
 
 **Start Command:**
+
 ```bash
 npm start
 ```
 
 **Environment Variables:**
+
 ```
 NODE_ENV=production
 PORT=3000
@@ -82,11 +87,13 @@ dist/
 ### Troubleshooting
 
 **Porta 3000 ocupada?**
+
 ```bash
 PORT=8080 npm start
 ```
 
 **Build falha?**
+
 ```bash
 rm -rf dist node_modules
 npm install
@@ -94,6 +101,7 @@ npm run build
 ```
 
 **Verificar arquivos compilados:**
+
 ```bash
 ls -la dist/
 ```

@@ -19,7 +19,7 @@ app.use(helmet());
 app.use(express.json());
 
 app.set('view engine', 'mustache');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '..', 'src', 'views'));
 app.engine('mustache', mustache());
 
 app.use(routerMain);
