@@ -16,6 +16,7 @@ router.get('/search', SearchController.search);
 router.get('/login', authController.login);
 router.post('/login_action', authController.loginAction);
 router.get('/register', authController.register);
+router.post('/register_action', authController.registerAction);
 router.get('/adopt', adoptController.form);
 
 export default router;

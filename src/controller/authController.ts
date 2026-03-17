@@ -56,3 +56,11 @@ export const register = (req: Request, res: Response) => {
     extraCss: '/css/auth.css',
   });
 };
+export const registerAction = (req: Request, res: Response) => {
+  const flash = req.flash('error');
+  res.render('auth/register', {
+    message: flash,
+    menu: createMenuObject(''),
+    extraCss: '/css/auth.css',
+  });
+};
