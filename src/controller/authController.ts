@@ -41,6 +41,7 @@ export const loginAction = async (req: Request, res: Response) => {
     if (user?.email) {
       if (compareUserPassword) {
         res.redirect('/');
+        req.session.user = user;
       }
       res.redirect('/login');
     }
