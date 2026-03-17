@@ -3,7 +3,7 @@ import type { Response, Request } from 'express';
 import zod from 'zod';
 
 import createMenuObject from '../helpers/createMenuObject.js';
-import AuthRepository from '../repository/authController.ts';
+import AuthRepository from '../repository/authRepository.ts';
 import Hash from '../utils/hash.ts';
 
 const authRepository = new AuthRepository();
@@ -23,7 +23,7 @@ export const loginAction = async (req: Request, res: Response) => {
 
   const validateLogin = zod.object({
     email: zod.email('Email inválido'),
-    password: zod.string().min(1, 'Senha obrigatória'),
+    password: zod.string('Senha obrigatória'),
   });
 
   const result = validateLogin.safeParse({ email, password });
@@ -32,26 +32,26 @@ export const loginAction = async (req: Request, res: Response) => {
     const message = result.error.issues.map(issue => issue.message).join(', ');
     req.flash('error', message);
     return res.redirect('/login');
-  } else {
-    const user = await authRepository.getByEmail(email);
-    const compareUserPassword = user?.password
-      ? authHash.comparePassword(password, user.password)
-      : false;
-
-    if (user?.email) {
-      if (compareUserPassword) {
-        req.session.user = {
-          name: user?.name,
-          id: user?.id,
-          email: user?.email,
-        };
-
-        return res.redirect('/');
-      }
-      res.redirect('/login');
-      req.flash('error', 'Você não possui cadastro');
-    }
   }
+  const user = await authRepository.getByEmail(email);
+  if (!user) {
+    req.flash('error', 'Você não possui cadastro');
+    return res.redirect('/login');
+  }
+
+  const compareUserPassword = await authHash.comparePassword(
+    password,
+    user.password
+  );
+
+  if (!compareUserPassword) {
+    req.flash('error', 'Senha inválida');
+    return res.redirect('/login');
+  }
+
+  req.session.user = user;
+
+  return res.redirect('/');
 };
 
 export const register = (req: Request, res: Response) => {
@@ -66,10 +66,7 @@ export const registerAction = async (req: Request, res: Response) => {
   const { email, password, name } = req.body;
 
   const validateRegister = zod.object({
-    name: zod
-      .string()
-      .min(2, 'Nome precisa ter no minimo 2 caracteres')
-      .max(20, 'Nome precisa ter no minimo 2 caracteres'),
+    name: zod.string().min(2, 'Nome precisa ter no minimo 2 caracteres'),
     email: zod.string().email('Email inválido'),
     password: zod.string().min(1, 'Senha obrigatória'),
   });

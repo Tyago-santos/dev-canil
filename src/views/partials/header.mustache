@@ -15,11 +15,14 @@
         <div class="header__actions">
             <form method="GET" action="/search">
                 <input type="search" name="q" value="{{q}}" placeholder="Pesquise por raça" />
+             <span class="header__user">Olá, {{user.name}}</span>
+
             </form>
+
             <div class="header__auth">
+                <a class="btn btn--ghost" href="/adopt/pets">Pets para adoção</a>
                 <a class="btn btn--ghost" href="/adopt"> Cadastrar animal para adoção</a>
                 <button class="btn btn--ghost" type="button" data-theme-toggle aria-pressed="false">Modo escuro</button>
-                     <span class="header__user">Olá, {{user.name}}</span>
 
             </div>
         </div>
