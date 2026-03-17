@@ -40,10 +40,16 @@ export const loginAction = async (req: Request, res: Response) => {
 
     if (user?.email) {
       if (compareUserPassword) {
-        res.redirect('/');
-        req.session.user = user;
+        req.session.user = {
+          name: user?.name,
+          id: user?.id,
+          email: user?.email,
+        };
+
+        return res.redirect('/');
       }
       res.redirect('/login');
+      req.flash('error', 'Você não possui cadastro');
     }
   }
 };
