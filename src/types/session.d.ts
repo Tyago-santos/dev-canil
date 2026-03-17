@@ -1,9 +1,9 @@
 import 'express-session';
 
 interface UserRow {
-  id: number;
+  name: string;
+  id?: number;
   email: string;
-  password: string;
 }
 
 declare module 'express-session' {

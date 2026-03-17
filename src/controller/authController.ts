@@ -20,7 +20,7 @@ export const login = (req: Request, res: Response) => {
 
 export const loginAction = async (req: Request, res: Response) => {
   const { email, password } = req.body;
-  console.log(email, password, 'body');
+
   const validateLogin = zod.object({
     email: zod.email('Email inválido'),
     password: zod.string().min(1, 'Senha obrigatória'),
