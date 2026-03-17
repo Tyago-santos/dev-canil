@@ -13,12 +13,12 @@ export default defineConfig({
   outDir: 'dist',
   bundle: false,
   skipNodeModulesBundle: true,
-  async onSuccess() {
+  onSuccess() {
     // Copiar views para dist (para ter disponível em produção)
     try {
-      execSync('xcopy src\\views dist\\views /E /I /Y', { stdio: 'inherit' });
+      execSync('cp -r src/views dist/views', { stdio: 'inherit' });
       console.log('✓ Views copiadas para dist/');
-    } catch (err) {
+    } catch {
       console.log('⚠ Views já existem ou erro ao copiar');
     }
   },
