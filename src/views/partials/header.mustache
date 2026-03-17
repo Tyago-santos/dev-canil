@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetDevShop - O petshop do dev</title>
+    <title>Pet Adoption</title>
     <link rel="stylesheet" href="/css/style.css" />
+    {{#extraCss}}<link rel="stylesheet" href="{{extraCss}}" />{{/extraCss}}
     <link rel="icon" type="image/png" href="/images/favicon.png" />
 </head>
 <body>
 <header>
     <div class="container">
-        <a href="">PetDevShop</a>
-        <form method="GET" action="/search">
-            <input type="search" name="q" value="{{q}}" placeholder="Pesquise por raça" />
-        </form>
+        <a href="">Pet Adoption</a>
+        <div class="header__actions">
+            <form method="GET" action="/search">
+                <input type="search" name="q" value="{{q}}" placeholder="Pesquise por raça" />
+            </form>
+            <div class="header__auth">
+                <a class="btn btn--ghost" href="/adopt"> Cadastrar animal para adoção</a>
+                <button class="btn btn--ghost" type="button" data-theme-toggle aria-pressed="false">Modo escuro</button>
+
+                <span class="header__user">Olá, Tiago</span>
+
+            </div>
+        </div>
     </div>
 </header>
-<nav>    
-    <ul>
-        <li class="{{#menu.all}}active{{/menu.all}}"><a href="/">Todos</a></li>
-        <li class="{{#menu.dog}}active{{/menu.dog}}"><a href="/dogs">Cachorros</a></li>
-        <li class="{{#menu.cat}}active{{/menu.cat}}"><a href="/cats">Gatos</a></li>
-        <li class="{{#menu.fish}}active{{/menu.fish}}"><a href="/fishes">Peixes</a></li>
-    </ul>
-</nav>

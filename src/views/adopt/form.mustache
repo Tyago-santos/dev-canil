@@ -1,0 +1,43 @@
+{{>partials/header}}
+
+<section class="auth">
+  <div class="container">
+    <div class="auth__card">
+      <h1 class="auth__title">Formulário de adoção</h1>
+      <p class="auth__subtitle">Preencha os dados para dar um novo lar a este pet.</p>
+
+      <form method="POST" action="/adopt">
+        <div class="auth__field">
+          <label for="petName">Nome do animal</label>
+          <input id="petName" type="text" name="petName" value="{{petName}}" required />
+        </div>
+        <div class="auth__field">
+          <label for="petBreed">Raça do animal</label>
+          <input id="petBreed" type="text" name="petBreed" value="{{petBreed}}" required />
+        </div>
+        <div class="auth__field">
+          <label for="petSex">Gênero</label>
+          <input id="petSex" type="text" name="petSex" value="{{petSex}}" required />
+        </div>
+        <div class="auth__field">
+          <label for="petColor">Cor</label>
+          <input id="petColor" type="text" name="petColor" value="{{petColor}}" required />
+        </div>
+        <div class="auth__field">
+          <label for="petPhoto">Foto do animal</label>
+          <input id="petPhoto" type="file" name="petPhoto" accept="image/*" />
+        </div>
+        <div class="auth__field">
+          <label for="reason">Por que quer adotar?</label>
+          <textarea id="reason" name="reason" rows="4" placeholder="Conte um pouco sobre você" required></textarea>
+        </div>
+        <div class="auth__actions">
+          <button class="btn btn--solid" type="submit">Enviar pedido</button>
+          <a class="auth__link" href="/">Voltar para a home</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{>partials/footer}}

@@ -1,0 +1,31 @@
+{{>partials/authHeader}}
+
+
+<section class="auth">
+  <div class="container">
+    <div class="auth__card">
+      {{#message}}
+        <div class="auth__flash auth__flash--error">{{.}}</div>
+      {{/message}}
+      <h1 class="auth__title">Bem-vindo de volta</h1>
+      <p class="auth__subtitle">Acesse sua conta para continuar ajudando pets a encontrar um lar.</p>
+
+      <form method="POST" action="/login_action">
+        <div class="auth__field">
+          <label for="email">Email</label>
+          <input id="email"  name="email" placeholder="seu@email.com"  />
+        </div>
+        <div class="auth__field">
+          <label for="password">Senha</label>
+          <input id="password" type="password" name="password" placeholder="Sua senha" />
+        </div>
+        <div class="auth__actions">
+          <button class="btn btn--solid" type="submit">Entrar</button>
+          <a class="auth__link" href="/register">Ainda não tem conta? Cadastre-se</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{>partials/footer}}

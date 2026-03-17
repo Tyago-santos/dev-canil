@@ -1,5 +1,5 @@
 import type { Response, Request } from 'express';
-import { data } from '../mode/pets.js';
+import { data } from '../model/pets.ts';
 import createMenuObject from '../helpers/createMenuObject.js';
 
 interface QueryName {

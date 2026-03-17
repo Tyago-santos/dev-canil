@@ -6,6 +6,7 @@ type Pet = {
   name: string;
   color: string;
   sex: 'Masculino' | 'Feminino';
+  story: string;
 };
 
 export const pet: Pet[] = [
@@ -15,6 +16,8 @@ export const pet: Pet[] = [
     name: 'Labrador Retriever',
     color: 'Amarelo',
     sex: 'Masculino',
+    story:
+      'Foi encontrado no parque do bairro, seguindo crianças e abanando o rabo até encontrar alguém que o ajudasse.',
   },
   {
     type: 'dog',
@@ -22,6 +25,8 @@ export const pet: Pet[] = [
     name: 'Bulldog Francês',
     color: 'Branco com manchas pretas',
     sex: 'Feminino',
+    story:
+      'Chegou ao abrigo após ser resgatada de uma mudança, ficou para trás e foi acolhida pela vizinhança.',
   },
   {
     type: 'dog',
@@ -29,6 +34,8 @@ export const pet: Pet[] = [
     name: 'Poodle',
     color: 'Caramelo',
     sex: 'Feminino',
+    story:
+      'Foi encontrada próxima a uma escola, bem cuidada, mas sem identificação, e virou xodó do time de resgate.',
   },
   {
     type: 'dog',
@@ -36,6 +43,8 @@ export const pet: Pet[] = [
     name: 'Golden Retriever',
     color: 'Dourado',
     sex: 'Masculino',
+    story:
+      'Apareceu na porta de uma padaria pedindo carinho, com coleira antiga e sem endereço.',
   },
   {
     type: 'dog',
@@ -43,6 +52,8 @@ export const pet: Pet[] = [
     name: 'Pastor Alemão',
     color: 'Preto e bege',
     sex: 'Masculino',
+    story:
+      'Foi resgatado em uma área rural após se perder durante uma tempestade.',
   },
   {
     type: 'dog',
@@ -50,6 +61,8 @@ export const pet: Pet[] = [
     name: 'Labrador Preto',
     color: 'Preto',
     sex: 'Masculino',
+    story:
+      'Foi encontrado na orla seguindo corredores; estava cansado, mas amigável e bem treinado.',
   },
   {
     type: 'dog',
@@ -57,6 +70,8 @@ export const pet: Pet[] = [
     name: 'Husky Siberiano',
     color: 'Branco e cinza',
     sex: 'Masculino',
+    story:
+      'Fugiu durante os fogos de fim de ano e ficou vagando até ser acolhido por voluntários.',
   },
   {
     type: 'dog',
@@ -64,6 +79,8 @@ export const pet: Pet[] = [
     name: 'São Bernardo',
     color: 'Marrom e branco',
     sex: 'Masculino',
+    story:
+      'Chegou ao abrigo após ser encontrado em uma estrada, molhado e com frio, mas muito dócil.',
   },
 
   {
@@ -72,6 +89,8 @@ export const pet: Pet[] = [
     name: 'Gato Persa',
     color: 'Branco',
     sex: 'Feminino',
+    story:
+      'Foi deixada em uma clínica veterinária e, desde então, busca um lar tranquilo.',
   },
   {
     type: 'cat',
@@ -79,6 +98,8 @@ export const pet: Pet[] = [
     name: 'Gato Siamês',
     color: 'Amarelo e marrom',
     sex: 'Masculino',
+    story:
+      'Foi resgatado de um telhado após dias miando, super carinhoso com humanos.',
   },
   {
     type: 'cat',
@@ -86,6 +107,8 @@ export const pet: Pet[] = [
     name: 'Maine Coon',
     color: 'Cinza',
     sex: 'Masculino',
+    story:
+      'Apareceu no jardim de uma casa e se aproximou sozinho pedindo comida e colo.',
   },
 
   {
@@ -94,6 +117,8 @@ export const pet: Pet[] = [
     name: 'Sphynx',
     color: 'Cinza',
     sex: 'Feminino',
+    story:
+      'Foi encontrada em um estacionamento, sem chip, e se adaptou rápido ao abrigo.',
   },
   {
     type: 'cat',
@@ -101,6 +126,8 @@ export const pet: Pet[] = [
     name: 'Gato Bengal',
     color: 'Amarelo e marrom',
     sex: 'Masculino',
+    story:
+      'Chegou ao resgate após ser visto sozinho em um condomínio, sempre curioso e brincalhão.',
   },
   {
     type: 'fish',
@@ -108,6 +135,8 @@ export const pet: Pet[] = [
     name: 'Tanictis',
     color: 'Dourado',
     sex: 'Feminino',
+    story:
+      'Foi entregue por uma família que mudou de cidade e precisava de um novo lar responsável.',
   },
   {
     type: 'fish',
@@ -115,6 +144,8 @@ export const pet: Pet[] = [
     name: 'Matogrosso',
     color: 'Marrom',
     sex: 'Masculino',
+    story:
+      'Veio de um aquário desativado e agora procura um ambiente calmo e bem cuidado.',
   },
   {
     type: 'fish',
@@ -122,6 +153,8 @@ export const pet: Pet[] = [
     name: 'Neon',
     color: 'Azul e vermelho',
     sex: 'Feminino',
+    story:
+      'Foi resgatada com outros peixes após uma queda de energia que danificou o aquário antigo.',
   },
   {
     type: 'fish',
@@ -129,6 +162,8 @@ export const pet: Pet[] = [
     name: 'Limpvidro',
     color: 'Branco',
     sex: 'Feminino',
+    story:
+      'Chegou ao abrigo após ser doado por um aquarista que não podia mais cuidar.',
   },
 ];
 

@@ -1,0 +1,38 @@
+{{>partials/authHeader}}
+
+<section class="auth">
+  <div class="container">
+    <div class="auth__card">
+      {{#message}}
+        <div class="auth__flash auth__flash--error">{{.}}</div>
+      {{/message}}
+      <h1 class="auth__title">Crie sua conta</h1>
+      <p class="auth__subtitle">Cadastre-se para salvar seus favoritos e acompanhar adoções.</p>
+
+      <form method="POST" action="/register">
+        <div class="auth__field">
+          <label for="name">Nome completo</label>
+          <input id="name" type="text" name="name" placeholder="Seu nome" required />
+        </div>
+        <div class="auth__field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="seu@email.com" required />
+        </div>
+        <div class="auth__field">
+          <label for="password">Senha</label>
+          <input id="password" type="password" name="password" placeholder="Crie uma senha" required />
+        </div>
+        <div class="auth__field">
+          <label for="confirm">Confirmar senha</label>
+          <input id="confirm" type="password" name="confirm" placeholder="Repita a senha" required />
+        </div>
+        <div class="auth__actions">
+          <button class="btn btn--solid" type="submit">Criar conta</button>
+          <a class="auth__link" href="/login">Já tem conta? Entrar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{{>partials/footer}}

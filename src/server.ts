@@ -3,6 +3,8 @@ import helmet from 'helmet';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import mustache from 'mustache-express';
+import session from 'express-session';
+import flash from 'connect-flash';
 
 import routerMain from './routes/index.js';
 import { notFound } from './routes/notFound.js';
@@ -17,15 +19,24 @@ app.use(express.static(staticPath));
 
 app.use(helmet());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.set('view engine', 'mustache');
-app.set('views', path.join(__dirname, '..', 'src', 'views'));
-app.engine('mustache', mustache());
+app.use(
+  session({
+    secret: 'segredo',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+app.use(flash());
 
 app.use(routerMain);
 app.use(notFound);
 
-app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'mustache');
+app.set('views', path.join(__dirname, '..', 'src', 'views'));
+app.engine('mustache', mustache());
 
 const PORT = process.env.PORT ?? 3000;
 

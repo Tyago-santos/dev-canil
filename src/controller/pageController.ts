@@ -1,7 +1,7 @@
 import type { Response, Request } from 'express';
 import createMenuObject from '../helpers/createMenuObject.js';
 
-import { data } from '../mode/pets.js';
+import { data } from '../model/pets.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const home = (req: Request, res: Response) => {
