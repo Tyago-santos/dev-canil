@@ -56,11 +56,40 @@ export const register = (req: Request, res: Response) => {
     extraCss: '/css/auth.css',
   });
 };
-export const registerAction = (req: Request, res: Response) => {
-  const flash = req.flash('error');
-  res.render('auth/register', {
-    message: flash,
-    menu: createMenuObject(''),
-    extraCss: '/css/auth.css',
+export const registerAction = async (req: Request, res: Response) => {
+  const { email, password, name } = req.body;
+
+  const validateRegister = zod.object({
+    name: zod
+      .string()
+      .min(2, 'Nome precisa ter no minimo 2 caracteres')
+      .max(20, 'Nome precisa ter no minimo 2 caracteres'),
+    email: zod.string().email('Email inválido'),
+    password: zod.string().min(1, 'Senha obrigatória'),
   });
+
+  const result = validateRegister.safeParse({ name, email, password });
+
+  if (!result.success) {
+    const message = result.error.issues.map(issue => issue.message).join(', ');
+    req.flash('error', message);
+    return res.redirect('/register');
+  }
+
+  const user = await authRepository.getByEmail(email);
+  if (user?.email) {
+    req.flash('error', 'Email já existe');
+    return res.redirect('/register');
+  }
+
+  const hashedPassword = await authHash.hashPassword(password);
+
+  await authRepository.createUser(name, email, hashedPassword);
+
+  req.session.user = {
+    name,
+    email,
+    id: Number(user?.id),
+  };
+  return res.redirect('/');
 };
