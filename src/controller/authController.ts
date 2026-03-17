@@ -1,9 +1,13 @@
 import type { Response, Request } from 'express';
-import createMenuObject from '../helpers/createMenuObject.js';
-// import AuthRepository from '../repository/authController.ts';
+
 import zod from 'zod';
 
-// const authRepository = new AuthRepository();
+import createMenuObject from '../helpers/createMenuObject.js';
+import AuthRepository from '../repository/authController.ts';
+import Hash from '../utils/hash.ts';
+
+const authRepository = new AuthRepository();
+const authHash = new Hash();
 
 export const login = (req: Request, res: Response) => {
   const flash = req.flash('error');
@@ -14,21 +18,32 @@ export const login = (req: Request, res: Response) => {
   });
 };
 
-export const loginAction = (req: Request, res: Response) => {
+export const loginAction = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   console.log(email, password, 'body');
   const validateLogin = zod.object({
     email: zod.email('Email inválido'),
-    password: zod.string(),
+    password: zod.string().min(1, 'Senha obrigatória'),
   });
 
-  const { error } = validateLogin.safeParse({ email, password });
+  const result = validateLogin.safeParse({ email, password });
 
-  console.log(error);
+  if (!result.success) {
+    const message = result.error.issues.map(issue => issue.message).join(', ');
+    req.flash('error', message);
+    return res.redirect('/login');
+  } else {
+    const user = await authRepository.getByEmail(email);
+    const compareUserPassword = user?.password
+      ? authHash.comparePassword(password, user.password)
+      : false;
 
-  if (error) {
-    req.flash('error', error.message);
-    res.redirect('/login');
+    if (user?.email) {
+      if (compareUserPassword) {
+        res.redirect('/');
+      }
+      res.redirect('/login');
+    }
   }
 };
 
