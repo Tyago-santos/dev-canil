@@ -11,7 +11,22 @@ export default defineConfig({
   dts: false,
   target: 'node18',
   outDir: 'dist',
-  bundle: true,
+  external: [
+    'express',
+    'mysql2',
+    'bcrypt',
+    'multer',
+    'mustache-express',
+    'connect-flash',
+    'express-session',
+    'zod',
+    'events',
+    'buffer',
+    'path',
+    'url',
+    'fs',
+    'os',
+  ],
   onSuccess() {
     // Copiar views para dist (para ter disponível em produção)
     try {
