@@ -1,4 +1,4 @@
-![Dev Canil](./public/images/favicon.png)
+![Pet Adoption](./public/images/favicon.png)
 
 # Dev Canil - Sistema de Adoção de Pets
 
