@@ -11,8 +11,7 @@ export default defineConfig({
   dts: false,
   target: 'node18',
   outDir: 'dist',
-  bundle: false,
-  skipNodeModulesBundle: true,
+  bundle: true,
   onSuccess() {
     // Copiar views para dist (para ter disponível em produção)
     try {
